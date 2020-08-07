@@ -2,7 +2,7 @@
 
 `another:L0ki`
 
-`blog：http://l0ki.top` 
+`blog：https://l0ki.top` 
 
 IP 端口 协议 网站组件分层  指纹识别 序列化输出显示
 
@@ -17,13 +17,13 @@ python3 HostDetails.py
 
 ## 组件信息
 
-![image-20200807143505847](https://l0ki-town.oss-cn-beijing.aliyuncs.com/l0ki.top/image-20200807143505847.png)
+![ima](https://l0ki-town.oss-cn-beijing.aliyuncs.com/l0ki.top/image-20200807143505847.png)
 
 
 
 ## 组件分层
 
-![image-20200807143425425](https://l0ki-town.oss-cn-beijing.aliyuncs.com/l0ki.top/image-20200807143425425.png)
+![ima](https://l0ki-town.oss-cn-beijing.aliyuncs.com/l0ki.top/image-20200807143425425.png)
 
 ## 爬取结果
 
