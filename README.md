@@ -1,6 +1,10 @@
 ## 【红队信息收集利器】FOFA Host Details
 
- IP 端口 协议 网站组件分层  指纹识别 序列化输出显示
+`another:L0ki`
+
+`blog：http://l0ki.top` 
+
+IP 端口 协议 网站组件分层  指纹识别 序列化输出显示
 
 指纹识别基于`@another:w8ay`
 
