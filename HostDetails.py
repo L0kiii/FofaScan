@@ -280,7 +280,7 @@ def getData():
     pass
 
 
-if __name__ == '__main__'：
+if __name__ == '__main__':
     print("
                 ______       __        _____                    
                 |  ___|     / _|      /  ___|                   
