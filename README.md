@@ -4,6 +4,8 @@
 
 `blog：https://l0ki.top` 
 
+`鸣谢：l3yx`
+
 IP 端口 协议 网站组件分层  指纹识别CMS 序列化输出显示
 
 指纹识别基于`@another:w8ay`
