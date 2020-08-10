@@ -289,8 +289,8 @@ if __name__ == '__main__':
                 | | | (_) || | | (_| |/\__/ /| (__| (_| || | | |
                 \_|  \___/ |_|  \__,_|\____/  \___|\__,_||_| |_|
                                                                 
+author:L0ki
 blog: https://l0ki.top
-github: https://github.com/L0kiii/FofaScan
-usage: python3 HostDetails.py                                                        
+github: https://github.com/L0kiii/FofaScan                                                       
 """)
     getData()
