@@ -1,6 +1,6 @@
 ## 【红队信息收集利器】FOFA Host Details
 
-`another:L0ki`
+`author:L0ki`
 
 `blog：https://l0ki.top` 
 
@@ -8,7 +8,7 @@
 
 IP 端口 协议 网站组件分层  指纹识别CMS 序列化输出显示
 
-指纹识别基于`@another:w8ay`
+指纹识别基于`@author:w8ay`
 
 ## 用法
 
