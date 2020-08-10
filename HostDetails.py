@@ -1,6 +1,6 @@
 """
 @name: FOFA-HostDetails-Search
-@another: L0ki
+@author: L0ki
 @time: 2020/08/07
 @blog: https://l0ki.top
 """
