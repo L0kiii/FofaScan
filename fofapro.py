@@ -4,7 +4,7 @@
 @time: 2020/08/07
 @blog: https://l0ki.top
 """
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import urllib.request
 from bs4 import BeautifulSoup
@@ -14,31 +14,31 @@ import codecs
 import json
 import re
 import requests
+from requests.models import Response
 
 header = {
     'Accept-Language': "zh-CN,zh;q=0.9,en;q=0.8",
     'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.105 Safari/537.36",
-    'Cookie': "_fofapro_ars_session="+input("Cookie(not necessary):"),#请在此处填写cookie,
+    'Cookie': "_fofapro_ars_session=" + input("Cookie(not necessary):"),  # 请在此处填写cookie
     'Connection': "keep-alive"
 }
 
-url=input("识别Url:")
-host = "https://fofa.so/hosts/" + url
 
+global url
 
 def read_config():
     config_file = os.path.join("fofacms.json")
-    with open(config_file, 'r',encoding='utf-8') as f:
+    with open(config_file, 'r', encoding='utf-8') as f:
         mark_list = json.load(f)
     return mark_list
- 
- 
+
+
 class Fofacms:
- 
+
     def __init__(self, html, title):
         self.html = html.lower()
         self.title = title.lower()
- 
+
     def get_result(self, a):
         builts = ["(body)\s*=\s*\"", "(title)\s*=\s*\""]
         if a is True:
@@ -62,7 +62,7 @@ class Fofacms:
                     else:
                         return False
         raise Exception("不能识别的a:" + str(a))
- 
+
     def calc_express(self, expr):
         #  title="NBX NetSet" || (header="Alternates" && body="NBX")
         #  1||(2&&3) => 1 2 3 && ||
@@ -70,7 +70,7 @@ class Fofacms:
         # header="SS_MID" && header="squarespace.net"
         expr = self.in2post(expr)
         # print("后缀表达式", expr)
- 
+
         stack = []
         special_sign = ["||", "&&"]
         if len(expr) > 1:
@@ -90,11 +90,11 @@ class Fofacms:
                 return stack.pop()
         else:
             return self.get_result(expr[0])
- 
+
     def in2post(self, expr):
         """ :param expr: 前缀表达式
             :return: 后缀表达式
- 
+
             Example：
                 1||(2&&3) => 1 2 3 && ||
         """
@@ -102,7 +102,7 @@ class Fofacms:
         post = []  # 后缀表达式存储
         special_sign = ["&&", "||", "(", ")"]
         builts = ["body\s*=\s*\"", "title\s*=\s*\""]
- 
+
         exprs = []
         tmp = ""
         in_quote = 0  # 0未发现 1发现 2 待验证状态
@@ -122,7 +122,7 @@ class Fofacms:
                 continue
             for i in special_sign:
                 if tmp.endswith(i):
- 
+
                     if i == ")" and in_quote == 2:
                         # 查找是否有左括号
                         zuo = 0
@@ -157,7 +157,7 @@ class Fofacms:
             else:
                 if z != ')' and (not stack or z == '(' or stack[-1] == '('):  # stack 不空；栈顶为（；优先级大于
                     stack.append(z)  # 运算符入栈
- 
+
                 elif z == ')':  # 右括号出栈
                     while True:
                         x = stack.pop()
@@ -165,7 +165,7 @@ class Fofacms:
                             post.append(x)
                         else:
                             break
- 
+
                 else:  # 比较运算符优先级，看是否入栈出栈
                     while True:
                         if stack and stack[-1] != '(':
@@ -176,8 +176,8 @@ class Fofacms:
         while stack:  # 还未出栈的运算符，需要加到表达式末尾
             post.append(stack.pop())
         return post
- 
- 
+
+
 def fingerprint(body):
     mark_list = read_config()
     # title
@@ -200,36 +200,43 @@ def fingerprint(body):
     return whatweb
 
 
+cms_url = "http://" + url
+resp = requests.get(cms_url).text
+
+
 def getData():
     global component, product, port
-    cms_url = "http://" + url
-    resp = requests.get(cms_url).text
     ret = urllib.request.Request(url=host, headers=header)
-    if ret: print("[+]Login Success...")
-    else: print("[*]Login Failed ...")
+    if ret:
+        print("[+]Login Success...")
+    else:
+        print("[*]Login Failed ...")
 
     # 打开网页
     res = urllib.request.urlopen(ret)
-    if res: print("[+]Open Success...")
-    else: print("[*]Open Failed...")
+    if res:
+        print("[+]Open Success...")
+    else:
+        print("[*]Open Failed...")
 
     # 转化格式
     response = BeautifulSoup(res, 'html.parser')
-    if response: print("[+]Change Success...")
-    else: print("[*]Change Failed...")
-
+    if response:
+        print("[+]Change Success...")
+    else:
+        print("[*]Change Failed...")
 
     # 找到想要数据的父元素
     pattern_ip = re.compile(r'var ip = "(.*?)"')
     pattern_key = re.compile(r'var key = "(.*?)"', re.S)
     ip = pattern_ip.findall(str(response))
     key = pattern_key.findall(str(response))
-    print("[+]This is ip:"+" "+ip[0])
-    print("[+]This is key:"+" "+key[0])
+    print("[+]This is ip:" + " " + ip[0])
+    print("[+]This is key:" + " " + key[0])
 
     # 正则接口获取组件信息
     json_url = "https://fofa.so/ajax/get_rules?ip=" + ip[0] + "&key=" + key[0]
-    print("[+]This is successful splicing Url:"+" "+json_url)
+    print("[+]This is successful splicing Url:" + " " + json_url)
     # 处理请求数据
     json_response = requests.get(url=json_url, headers=header)
     json_data = json_response.text
@@ -246,28 +253,29 @@ def getData():
     # 文件路径
     file_path = folder_name + "/" + file_name
 
-   
     # 端口
     # 组件
     # cms
     for i in component['rules']:
         port = i
         product = component['rules'][i]['data'][0]['product']
-        data = response.find_all('body')       
-        cms=fingerprint(resp)
+        data = response.find_all('body')
+        cms = fingerprint(resp)
         for item in data:
-            TCP_data = item.find('div', {'class': 'ip-table-item marBot10 padBot2'}).get_text().replace('\n\n', '').replace('\n', ' ')
-            pattern_tcp=re.compile(r'.*? 协议（.*?）：.*?')
-            TCP_change=pattern_tcp.findall(TCP_data)
-            TCP=TCP_data.replace(TCP_change[0], ' ')
+            TCP_data = item.find('div', {'class': 'ip-table-item marBot10 padBot2'}).get_text().replace('\n\n',
+                                                                                                        '').replace(
+                '\n', ' ')
+            pattern_tcp = re.compile(r'.*? 协议（.*?）：.*?')
+            TCP_change = pattern_tcp.findall(TCP_data)
+            TCP = TCP_data.replace(TCP_change[0], ' ')
 
             dict1 = {
-                'url':url,
+                'url': url,
                 'ip': ip,
                 '协议': TCP,
                 '端口': port,
                 '组件': product,
-                'CMS':cms
+                'CMS': cms
             }
             try:
                 with codecs.open(file_path, 'a', encoding="utf-8") as fp:
@@ -288,9 +296,14 @@ if __name__ == '__main__':
                 |  _|/ _ \ |  _|/ _` | `--. \ / __|/ _` || '_ \ 
                 | | | (_) || | | (_| |/\__/ /| (__| (_| || | | |
                 \_|  \___/ |_|  \__,_|\____/  \___|\__,_||_| |_|
-                                                                
+
 author:L0ki
 blog: https://l0ki.top
 github: https://github.com/L0kiii/FofaScan                                                       
 """)
-    getData()
+    with open(file="urls.txt", mode="r", encoding="utf-8") as f:
+        urls = f.readlines()
+        for do in urls:
+            url = do.strip("\n")
+            host = "https://fofa.so/hosts/" + url
+            getData()

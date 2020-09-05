@@ -30,7 +30,7 @@ python3 HostDetails.py
 ## 爬取结果
 
 ```json
-{"url": "baidu.com", "ip": ["39.156.69.79"], "协议": " https http", "端口": "443", "组件": "D***********t","CMS":""}
+{"url": "baidu.com", "ip": ["39.156.69.79"], "协议": " https http", "端口": "443", "组件": "D***t","CMS":""}
 {"url": "baidu.com", "ip": ["39.156.69.79"], "协议": " https http", "端口": "80", "组件": "Apache-Web-Server","CMS":""}
 ....
 
