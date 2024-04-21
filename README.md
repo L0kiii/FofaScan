@@ -1,12 +1,6 @@
 
 ## 【Red Team Information Gathering Tool】FOFA Host Details
 
-`Author: L0ki`
-
-`Blog: [https://l0ki.net](https://l0ki.net)`
-
-`Acknowledgements: l3yx`
-
 IP Port Protocol Website Component Layer Fingerprinting CMS Serialization Output Display
 
 Fingerprinting based on `@author:w8ay`
