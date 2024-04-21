@@ -3,7 +3,7 @@
 
 `Author: L0ki`
 
-`Blog: [https://l0ki.top](https://l0ki.top)`
+`Blog: [https://l0ki.net](https://l0ki.net)`
 
 `Acknowledgements: l3yx`
 
