@@ -3,7 +3,7 @@
 
 IP Port Protocol Website Component Layer Fingerprinting CMS Serialization Output Display
 
-Fingerprinting based on `@author:w8ay`
+Fingerprinting based on `w8ay`
 
 ## Usage
 
