@@ -1,42 +1,41 @@
-## 【红队信息收集利器】FOFA Host Details
+```markdown
+## 【Red Team Information Gathering Tool】FOFA Host Details
 
-`author:L0ki`
+`Author: L0ki`
 
-`blog：https://l0ki.top` 
+`Blog: [https://l0ki.top](https://l0ki.top)`
 
-`鸣谢：l3yx`
+`Acknowledgements: l3yx`
 
-IP 端口 协议 网站组件分层  指纹识别CMS 序列化输出显示
+IP Port Protocol Website Component Layer Fingerprinting CMS Serialization Output Display
 
-指纹识别基于`@author:w8ay`
+Fingerprinting based on `@author:w8ay`
 
-## 用法
+## Usage
 
 ```python
-#若cms无对应值则代表识别不到
+# If there is no corresponding value for CMS, it means it cannot be identified
 python3 HostDetails.py
 ```
 
-## 组件信息
+## Component Information
 
-![ima](https://l0ki-town.oss-cn-beijing.aliyuncs.com/l0ki.top/image-20200807143505847.png)
+![Image](https://l0ki-town.oss-cn-beijing.aliyuncs.com/l0ki.top/image-20200807143505847.png)
 
+## Component Layering
 
+![Image](https://l0ki-town.oss-cn-beijing.aliyuncs.com/l0ki.top/image-20200807143425425.png)
 
-## 组件分层
-
-![ima](https://l0ki-town.oss-cn-beijing.aliyuncs.com/l0ki.top/image-20200807143425425.png)
-
-## 爬取结果
+## Crawling Results
 
 ```json
-{"url": "baidu.com", "ip": ["39.156.69.79"], "协议": " https http", "端口": "443", "组件": "D***t","CMS":""}
-{"url": "baidu.com", "ip": ["39.156.69.79"], "协议": " https http", "端口": "80", "组件": "Apache-Web-Server","CMS":""}
+{"url": "baidu.com", "ip": ["39.156.69.79"], "Protocol": "https http", "Port": "443", "Component": "D***t", "CMS": ""}
+{"url": "baidu.com", "ip": ["39.156.69.79"], "Protocol": "https http", "Port": "80", "Component": "Apache-Web-Server", "CMS": ""}
 ....
 
-if u r vip:
-{"url":"baidu.com","ip": ["39.156.69.79"], "协议": " https http", "端口": "443", "组件": "DigiCert-Cert","CMS":""}
-{"url":"baidu.com","ip": ["39.156.69.79"], "协议": " https http", "端口": "80", "组件": "Apache-Web-Server","CMS":""}
+If you are a VIP:
+{"url": "baidu.com", "ip": ["39.156.69.79"], "Protocol": "https http", "Port": "443", "Component": "DigiCert-Cert", "CMS": ""}
+{"url": "baidu.com", "ip": ["39.156.69.79"], "Protocol": "https http", "Port": "80", "Component": "Apache-Web-Server", "CMS": ""}
 ....
 ```
-
+```
