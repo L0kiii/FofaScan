@@ -1,4 +1,4 @@
-```markdown
+
 ## 【Red Team Information Gathering Tool】FOFA Host Details
 
 `Author: L0ki`
@@ -37,5 +37,4 @@ If you are a VIP:
 {"url": "baidu.com", "ip": ["39.156.69.79"], "Protocol": "https http", "Port": "443", "Component": "DigiCert-Cert", "CMS": ""}
 {"url": "baidu.com", "ip": ["39.156.69.79"], "Protocol": "https http", "Port": "80", "Component": "Apache-Web-Server", "CMS": ""}
 ....
-```
 ```
